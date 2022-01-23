@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../database");
 const Worker = require("./Worker");
+const Otp = require("./Otp");
 
 const User = sequelize.define('User', {
   // Model attributes are defined here
@@ -34,6 +35,10 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING, 
     // allowNull defaults to true
   },
+  verified: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  },
   dateOfBirth: {
     type: DataTypes.DATEONLY,
   }
@@ -45,6 +50,8 @@ const User = sequelize.define('User', {
 User.hasOne(Worker);
 Worker.belongsTo(User);
 
+User.hasOne(Otp);
+Otp.belongsTo(User);
 
 
 module.exports = User;

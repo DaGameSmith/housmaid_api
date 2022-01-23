@@ -1,5 +1,6 @@
 const { Router } = require("express");
-const { signupWorker, signupCustomer, signupAdmin, loginWorker, loginCustomer, loginAdmin } = require("../controllers/authControllers");
+const passport = require("passport");
+const { signupWorker, signupCustomer, signupAdmin, loginWorker, loginCustomer, loginAdmin, verifyOtp, sendOtp } = require("../controllers/authControllers");
 
 const router = Router();
 
@@ -11,7 +12,8 @@ router.post('/login-worker', loginWorker);
 router.post('/login-customer', loginCustomer);
 router.post('/login-admin', loginAdmin);
 
-
+router.post('/send-otp', passport.authenticate("jwt", {session: false}), sendOtp);
+router.post('/verify-otp', passport.authenticate("jwt", {session: false}), verifyOtp);
 
 
 module.exports = router;
