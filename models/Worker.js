@@ -8,19 +8,19 @@ const Worker = sequelize.define('Worker', {
   },
   jobTypes: {
     type: DataTypes.STRING,
-    allowNull: false
+    
   },
   Avaliability: {
     type: DataTypes.STRING,
-    allowNull: false
+    
   },
   workingHours: {
     type: DataTypes.STRING,
-    allowNull: false
+    
   },
   workExperience: {
     type: DataTypes.STRING,
-    allowNull: false
+    
   },
   status: {
     type: DataTypes.ENUM('available', 'employed'),

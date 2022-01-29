@@ -7,6 +7,10 @@ const Otp = sequelize.define('Otp', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  mobileNumber: {
+    type: DataTypes.STRING, 
+    allowNull: false,
+  },
   isUsed: {
     type: DataTypes.BOOLEAN,
     defaultValue: false

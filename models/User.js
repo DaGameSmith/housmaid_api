@@ -12,16 +12,10 @@ const User = sequelize.define('User', {
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false
   },
   email: {
     type: DataTypes.STRING,
-    allowNull: false,
     unique: true
-  },
-  password: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
   },
   role: {
     type: DataTypes.ENUM('worker', 'customer', 'admin'),
@@ -29,11 +23,12 @@ const User = sequelize.define('User', {
   },
   gender: {
     type: DataTypes.ENUM('male', 'female'),
-    allowNull: false
+    
   },
   mobileNumber: {
     type: DataTypes.STRING, 
-    // allowNull defaults to true
+    allowNull: false,
+    unique: true
   },
   verified: {
     type: DataTypes.BOOLEAN,
@@ -50,8 +45,8 @@ const User = sequelize.define('User', {
 User.hasOne(Worker);
 Worker.belongsTo(User);
 
-User.hasOne(Otp);
-Otp.belongsTo(User);
+// User.hasOne(Otp);
+// Otp.belongsTo(User);
 
 
 module.exports = User;
